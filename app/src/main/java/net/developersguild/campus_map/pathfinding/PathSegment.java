@@ -1,4 +1,4 @@
-package net.developersguild.maps.pathfinding;
+package net.developersguild.campus_map.pathfinding;
 
 public class PathSegment {
 	
