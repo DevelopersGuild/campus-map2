@@ -1,4 +1,4 @@
-package net.developersguild.maps.pathfinding;
+package net.developersguild.campus_map.pathfinding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;

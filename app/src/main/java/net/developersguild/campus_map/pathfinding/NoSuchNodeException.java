@@ -1,4 +1,4 @@
-package net.developersguild.maps.pathfinding;
+package net.developersguild.campus_map.pathfinding;
 
 /**
  * Suggests either a bad data set or an off-limits location
