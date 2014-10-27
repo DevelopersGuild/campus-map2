@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class PathFinder {
-	
-	public static List<PathSegment> pathBetweenFast(Node n1, Node n2){
+
+	public static List<PathSegment> pathBetween(Node n1, Node n2){
 		PriorityQueue<SummedPath> queue=new PriorityQueue<SummedPath>();
 		for(PathSegment p:n1.getPaths()){
 			queue.add(new SummedPath(p, n2));
@@ -37,8 +37,8 @@ public class PathFinder {
 		@Override
 		public int compareTo(SummedPath arg0) {
 			return Double.compare(
-					this.distanceToGoalSquared(),
-					arg0.distanceToGoalSquared());
+					this.distanceToGoalSquared()+this.lengthTotal, //A* pathfinding
+					arg0.distanceToGoalSquared()+arg0.lengthTotal);
 		}
 		
 		public SummedPath(PathSegment path, Node goal){
