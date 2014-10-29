@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.PriorityQueue;
 
-
+/**
+ * A Node is a point that one can walk to.
+ */
 public class Node {
 	
 	private final HashMap<Node, PathSegment> paths=new HashMap<Node, PathSegment>();
-	
+
 	private final double x, y;
 	
 	public Node(double x, double y){
