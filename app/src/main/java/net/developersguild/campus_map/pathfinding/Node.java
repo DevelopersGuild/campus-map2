@@ -1,22 +1,19 @@
 package net.developersguild.campus_map.pathfinding;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
-import java.util.PriorityQueue;
 
 /**
- * A Node is a point that one can walk to.
+ * A Node is a place you can go to. It has coordinates in 2D space and connections to other nodes.
  */
 public class Node {
 	
 	private final HashMap<Node, PathSegment> paths=new HashMap<Node, PathSegment>();
 
-	private final double x, y;
+	private final double latitude, longitude;
 	
 	public Node(double x, double y){
-		this.x=x;
-		this.y=y;
+		this.latitude =x;
+		this.longitude =y;
 	}
 	
 	public void addPathToNode(Node n, double d, String description){
@@ -32,23 +29,24 @@ public class Node {
 	}
 
 	public double distanceSquaredTo(Node n1) {
-		return distanceSquaredTo(n1.getX(), n1.getY());
+		return distanceSquaredTo(n1.getLatitude(), n1.getLongitude());
 	}
 
 	public double distanceSquaredTo(double latitude, double longitude) {
-		return (getX()-latitude)*(getX()-latitude)+(getY()-longitude)*(getY()-longitude);
+		return (getLatitude()-latitude)*(getLatitude()-latitude)
+                +(getLongitude()-longitude)*(getLongitude()-longitude);
 	}
 
-	public double getX() {
-		return x;
+	public double getLatitude() {
+		return latitude;
 	}
 
-	public double getY() {
-		return y;
+	public double getLongitude() {
+		return longitude;
 	}
 	
 	public String toString(){
-		return "N@("+x+","+y+")";
+		return "N@("+ latitude +","+ longitude +")";
 	}
 	
 }
