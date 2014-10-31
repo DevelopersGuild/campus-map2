@@ -19,6 +19,10 @@ public class Node {
 	public void addPathToNode(Node n, double d, String description){
 		paths.put(n, PathSegment.create(this, n, d, description));
 	}
+
+    public void addPathToNode(Node n, String description){
+        addPathToNode(n, Math.sqrt(this.distanceSquaredTo(n)), description);
+    }
 	
 	public PathSegment getPathToNeighbouringNode(Node n){
 		return paths.get(n);
