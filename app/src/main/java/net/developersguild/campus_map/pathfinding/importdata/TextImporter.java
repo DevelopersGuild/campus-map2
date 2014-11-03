@@ -49,12 +49,17 @@ public class TextImporter {
             Node node;
             if(name.charAt(0)=='>'){
                 node=new DestinationNode(
+                        mapGenerating,
                         name.substring(1).replaceAll("_"," "), //remove > at start, expand _
                         Double.parseDouble(parts[1]),
                         Double.parseDouble(parts[2])
                 );
             } else {
-                node = new Node(Double.parseDouble(parts[1]), Double.parseDouble(parts[2]));
+                node = new Node(
+                        mapGenerating,
+                        Double.parseDouble(parts[1]),
+                        Double.parseDouble(parts[2])
+                );
             }
             createdNodes.put(name, node);
             mapGenerating.addNode(node);

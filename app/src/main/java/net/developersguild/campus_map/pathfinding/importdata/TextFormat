@@ -9,21 +9,22 @@
 #
 #connection is the name of a node to connect to. If it begins with ">", it is a destination node and
 #   will be searchable (the ">" will be removed and "_" will be expanded to " ", and that name will
-#   be added to the list of searchable destinations).
+#   be added to the list of searchable destinations). Nodes may not be connected to until they are
+#   created on a line of their own.
 #description is the human-readable description of the path from the current node to the node named
 #   connection.
 #reverseDescription is the human-readable description of the path from the node named connection to
 #   the current node.
 #
-#
-#description or reverseDescription should be "/" if the connection is one-way reverse or forward,
-# respectively.
+#description or reverseDescription should be "/" if the connection is one-way, reverse or forward
+#   respectively.
 #
 #If you use "=" as the reverseDescription, it will be filled in by copying description and inverting
 #   "north", "south", "east" and "west" where they appear in lower case.
 #
 #For example:
+#
 >My_House 0.1 0.2
->Office_Center 0.2 0.2 myHouse:Walk_north_along_Main_Street:=
->Food_Mart 0.1 0.3 myHouse:Go_through_the_one-way_gate:/ office:/:Go_through_the_one-way_gate
-park 0.1 0.1 myHouse:Walk_west_along_First_Street:=
+>Office_Center 0.2 0.2 >My_House:Walk_north_along_Main_Street:=
+>Food_Mart 0.1 0.3 >My_House:Go_through_the_one-way_gate:/ >Office_Center:/:Go_through_the_one-way_gate
+parkingLot 0.1 0.1 >My_House:Walk_west_along_First_Street:=
