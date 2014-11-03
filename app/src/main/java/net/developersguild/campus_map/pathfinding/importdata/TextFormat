@@ -1,0 +1,29 @@
+#Comments may be placed on any line and end at the next newline
+#First, specify the bounds of the area. For example:
+0 1 0 1
+#specifies the map to accept points between 0 and 1 in both X and Y.
+#
+#Next, specify nodes and their connections.
+#The format is "name latitude longitude connection:description:reverseDescription". The last part,
+#   connection:description:reverseDescription, should be repeated once for each desired connection.
+#
+#connection is the name of a node to connect to. If it begins with ">", it is a destination node and
+#   will be searchable (the ">" will be removed and "_" will be expanded to " ", and that name will
+#   be added to the list of searchable destinations).
+#description is the human-readable description of the path from the current node to the node named
+#   connection.
+#reverseDescription is the human-readable description of the path from the node named connection to
+#   the current node.
+#
+#
+#description or reverseDescription should be "/" if the connection is one-way reverse or forward,
+# respectively.
+#
+#If you use "=" as the reverseDescription, it will be filled in by copying description and inverting
+#   "north", "south", "east" and "west" where they appear in lower case.
+#
+#For example:
+>My_House 0.1 0.2
+>Office_Center 0.2 0.2 myHouse:Walk_north_along_Main_Street:=
+>Food_Mart 0.1 0.3 myHouse:Go_through_the_one-way_gate:/ office:/:Go_through_the_one-way_gate
+park 0.1 0.1 myHouse:Walk_west_along_First_Street:=

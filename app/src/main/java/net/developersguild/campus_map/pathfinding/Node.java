@@ -10,8 +10,14 @@ public class Node {
 	private final HashMap<Node, PathSegment> paths=new HashMap<Node, PathSegment>();
 
 	private final double latitude, longitude;
-	
-	public Node(double x, double y){
+
+    /**
+     * Creates a node
+     * @param map The NavMap to register the Node to
+     * @param x the latitude of this node
+     * @param y the longitude of this node
+     */
+	public Node(NavMap map, double x, double y){
 		this.latitude =x;
 		this.longitude =y;
 	}

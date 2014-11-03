@@ -20,7 +20,9 @@ public class NavMap {
 	
 	//assume a node exists in each 3x3 group of regions...
 	public List<Node>[][] regions=new List[spaceSize][spaceSize];
-	
+
+    private static final DestinationRegistry destinations=new DestinationRegistry();
+
 	public NavMap(double minX, double maxX, double minY, double maxY){
 		this.minX=minX;
 		this.minY=minY;
@@ -63,10 +65,17 @@ public class NavMap {
         return bestContender;
 	}
 
+    public void addDestination(DestinationNode destinationNode) {
+        addNode(destinationNode);
+        destinations.add(destinationNode);
+    }
+
     /**
      * Adds a node to this NavMap.
+     *
      * @param n the node to add. Its X and Y coordinates must be within this map's bounds.
      */
+
 	public void addNode(Node n){
 		int regionX=(int)((n.getLatitude()-minX)/(maxX-minX) * spaceSize); // (0-1) * spaceSize
 		int regionY=(int)((n.getLongitude()-minY)/(maxY-minY) * spaceSize); // (0-1) * spaceSize
@@ -80,5 +89,5 @@ public class NavMap {
     public String toString(){
         return "("+minX+" - "+maxX+", "+minY + " - "+maxY+")";
     }
-	
+
 }
